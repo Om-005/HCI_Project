@@ -50,7 +50,7 @@
     window.scrollTo(0, 0);
     resultsGrid.innerHTML = `<p id="loader">Searching for videos...</p>`;
 
-    const url = `http://localhost:5000/search?q=${encodeURIComponent(query)}`;
+const url = `https://hci-project-3pg4.onrender.com/search?q=${encodeURIComponent(query)}`;
 
     try {
         const response = await fetch(url);
