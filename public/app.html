@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Edu.HCI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body class="dark-mode">
+    <header class="main-header">
+        <nav class="container main-nav">
+            <a href="#" id="home-link" class="logo">
+                <span class="logo-text font-display">🎓 Edu.HCI</span>
+            </a>
+            <div class="nav-links">
+                <button class="nav-login-btn" id="login-btn">Login</button>
+                <button id="dark-mode-toggle">
+                    <span>☀️</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="homepage-content">
+            <div class="hero">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1 class="font-display">Your Gateway to Knowledge</h1>
+                        <p>Find expert-led video lectures on any subject, from quantum physics to classical art.</p>
+                        <div class="search-form-container">
+                            <form id="search-form">
+                                <input id="search-input" type="search" placeholder="What do you want to learn today?">
+                                <button title="Search" type="submit" class="search-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="trending-searches">
+                            <button title="Search" class="trending-search-btn">Python for Beginners</button>
+                            <button title="Search" class="trending-search-btn">Programming with Java</button>
+                            <button title="Search" class="trending-search-btn">Basics of JavaScript</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="featured-categories" class="section">
+                <div id="hero2" class="container">
+                    <h2 class="section-title font-display">Explore by Category</h2>
+                    <div class="category-grid">
+                        <div class="category-card card-hover-effect" data-category="Science">
+                            <div class="icon">🔬</div>
+                            <h3 class="font-display">Science</h3>
+                        </div>
+                        <div class="category-card card-hover-effect" data-category="Technology">
+                            <div class="icon">💻</div>
+                            <h3 class="font-display">Technology</h3>
+                        </div>
+                        <div class="category-card card-hover-effect" data-category="Sports and Fitness">
+                            <div class="icon">🏏
+                            </div>
+                            <h3 class="font-display">Sports</h3>
+                        </div>
+                        <div class="category-card card-hover-effect" data-category="Business and Finance">
+                            <div class="icon">📈</div>
+                            <h3 class="font-display">Business</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" class="section">
+                <div class="container">
+                    <h2 class="section-title font-display">Start your learning journey in three simple steps</h2>
+                    <div class="how-it-works-timeline">
+                        <div class="timeline-step">
+                            <div class="timeline-number">1</div>
+                            <div class="timeline-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display">Search</h3>
+                            <p>Find lectures on any topic using our powerful search engine.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-number">2</div>
+                            <div class="timeline-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display">Learn</h3>
+                            <p>Watch high-quality videos from top educators around the world.</p>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-number">3</div>
+                            <div class="timeline-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display">Grow</h3>
+                            <p>Expand your knowledge and skills at your own pace.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="featured-channels" class="section">
+                <div class="container">
+                    <h2 class="section-title font-display">Featured Educators</h2>
+                    <div class="channel-grid">
+                        <a href="https://www.youtube.com/@CodeWithHarry" target="_blank">
+                        <div class="channel-card" data-channel="Code with Harry">
+                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_kX3sdbuu3KFmRPsmlu0R5Rx_BhpxwupjtvJmkEdNfla7w=s176-c-k-c0x00ffffff-no-rj-mo" alt="Code with Harry">
+                            <p>Code with Harry</p>
+                        </div>
+                        </a>
+                        <a href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank">
+                        <div class="channel-card" data-channel="Apna College">
+                            <img src="https://yt3.ggpht.com/FEcjRtez5od8UowDo6tTt9WlE-MrIFEmcwPMTORmK9Swk6KCklOmA3xfIG9WuLWfNYfNThQE=s176-c-k-c0x00ffffff-no-rj-mo" alt="Apna College">
+                            <p>Apna College</p>
+                        </div>
+                        </a>
+                        <a href="https://www.youtube.com/@nitinujgare" target="_blank">
+                        <div class="channel-card" data-channel="Nitin Ujgare">
+                            <img src="\images\NitinujgareSir.jpg" alt="Nitin Ujgare" referrerpolicy="no-referrer">
+                            <p>Nitin Ujgare Sir</p>
+                        </div>
+                        </a>
+                        <a href="https://www.youtube.com/@dhirajbirari533" target="_blank">
+                        <div class="channel-card" data-channel="DHIRAJ BIRARI">
+                            <img src="https://kbtcoe.org/wp-content/uploads/2016/11/DBirari.jpg" alt="DHIRAJ BIRARI">
+                            <p>Dhiraj Birari Sir</p>
+                        </div>
+                        </a>
+                        <a href="https://www.youtube.com/@chaiaurcode" target="_blank">
+                        <div class="channel-card" data-channel="Chai aur Code">
+                            <img src="https://yt3.googleusercontent.com/6tLBV-DRVemxhmanuezR5HkHshX2g7Y46Rq8cysyO1V-nd2SaQ2Fi8cdgVM-n6v_8XZ5BEimxXI=s160-c-k-c0x00ffffff-no-rj" alt="Chai aur Code">
+                            <p>Chai aur Code</p>
+                        </div>
+                        </a>
+                        <a href="https://www.youtube.com/@BroCodez" target="_blank">
+                        <div class="channel-card" data-channel="Bro Code">
+                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s176-c-k-c0x00ffffff-no-rj-mo" alt="Bro Code">
+                            <p>Bro Code</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="search-results-section" class="section-hidden section">
+            <div class="container">
+                <div id="back-to-home">
+                    <button>&larr; Back to Home</button>
+                </div>
+                <div class="results-header">
+                    <h2 class="font-display">Search Results for "<span id="search-query-display"></span>"</h2>
+                    <p class="results-summary">Found <span id="results-count">0</span> videos.</p>
+                </div>
+                <div id="results-grid">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Edu.HCI. All rights reserved.</p>
+            <p class="footer-text-secondary">A project for demonstrating HTML, CSS, and JavaScript skills.</p>
+            <p class="footer-text-secondary">Made by Om Wadghule.</p>
+        </div>
+    </footer>
+
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            <h2 class="font-display">Member Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="login-submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
