@@ -6,7 +6,7 @@ Edu.HCI is a full-stack educational web app that helps users discover YouTube vi
 
 ## 🌐 Live Demo
 
-
+https://eduhci.netlify.app
 
 ---
 
