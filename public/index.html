@@ -1,27 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎓 Edu.HCI</title>
+    <title>Edu.HCI – Learn Anything</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
 </head>
 
-<body class="dark-mode">
-    <header class="main-header">
+<body>
+    <div class="noise-overlay"></div>
+
+    <header class="main-header" id="main-header">
         <nav class="container main-nav">
             <a href="#" id="home-link" class="logo">
-                <span class="logo-text font-display">🎓 Edu.HCI</span>
+                <div class="logo-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">Edu<span class="logo-dot">.</span>HCI</span>
             </a>
-            <div class="nav-links">
-                <button class="nav-login-btn" id="login-btn">Login</button>
-                <button id="dark-mode-toggle">
-                    <span>☀️</span>
+            <div class="nav-center">
+                <a href="#" class="nav-link">Discover</a>
+                <a href="#featured-categories" class="nav-link">Categories</a>
+                <a href="#featured-channels" class="nav-link">Educators</a>
+            </div>
+            <div class="nav-right">
+                <button id="dark-mode-toggle" class="icon-btn" aria-label="Toggle theme">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="nav-login-btn" id="login-btn">
+                    <span>Sign In</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
                 </button>
             </div>
         </nav>
@@ -29,178 +60,395 @@
 
     <main id="main-content">
         <section id="homepage-content">
-            <div class="hero">
-                <div class="hero-overlay">
-                    <div class="hero-content">
-                        <h1 class="font-display">Your Gateway to Knowledge</h1>
-                        <p>Find expert-led video lectures on any subject, from quantum physics to classical art.</p>
-                        <div class="search-form-container">
-                            <form id="search-form">
-                                <input id="search-input" type="search" placeholder="What do you want to learn today?">
-                                <button title="Search" type="submit" class="search-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
-                                </button>
-                            </form>
+
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-bg">
+                    <div class="hero-orb hero-orb-1"></div>
+                    <div class="hero-orb hero-orb-2"></div>
+                    <div class="hero-orb hero-orb-3"></div>
+                    <div class="hero-grid"></div>
+                </div>
+                <div class="hero-body container">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>5,000+ Free Lectures Available</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Learn anything.<br>
+                        <span class="hero-title-accent">Master everything.</span>
+                    </h1>
+                    <p class="hero-subtitle">Discover expert-led video lectures from the world's best educators. From quantum physics to creative arts — all free.</p>
+
+                    <div class="search-wrapper">
+                        <form id="search-form" class="search-form">
+                            <div class="search-icon-left">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                            </div>
+                            <input id="search-input" type="search" placeholder="Search any topic, course, or educator..." autocomplete="off">
+                            <button type="submit" class="search-btn">
+                                <span>Search</span>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="trending-row">
+                        <span class="trending-label">Trending:</span>
+                        <div class="trending-chips">
+                            <button class="chip trending-search-btn">Python for Beginners</button>
+                            <button class="chip trending-search-btn">Java Programming</button>
+                            <button class="chip trending-search-btn">JavaScript Basics</button>
+                            <button class="chip trending-search-btn">Data Structures</button>
+                            <button class="chip trending-search-btn">Machine Learning</button>
                         </div>
-                        <div class="trending-searches">
-                            <button title="Search" class="trending-search-btn">Python for Beginners</button>
-                            <button title="Search" class="trending-search-btn">Programming with Java</button>
-                            <button title="Search" class="trending-search-btn">Basics of JavaScript</button>
-                        </div>
+                    </div>
+                </div>
+                <div class="hero-scroll-hint">
+                    <div class="scroll-mouse">
+                        <div class="scroll-wheel"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="container stats-inner">
+                    <div class="stat-item">
+                        <span class="stat-num">10M+</span>
+                        <span class="stat-label">Students</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">500+</span>
+                        <span class="stat-label">Educators</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Subjects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">Free</span>
+                        <span class="stat-label">Always</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Categories -->
             <section id="featured-categories" class="section">
-                <div id="hero2" class="container">
-                    <h2 class="section-title font-display">Explore by Category</h2>
-                    <div class="category-grid">
-                        <div class="category-card card-hover-effect" data-category="Science">
-                            <div class="icon">🔬</div>
-                            <h3 class="font-display">Science</h3>
-                        </div>
-                        <div class="category-card card-hover-effect" data-category="Technology">
-                            <div class="icon">💻</div>
-                            <h3 class="font-display">Technology</h3>
-                        </div>
-                        <div class="category-card card-hover-effect" data-category="Sports and Fitness">
-                            <div class="icon">🏏
-                            </div>
-                            <h3 class="font-display">Sports</h3>
-                        </div>
-                        <div class="category-card card-hover-effect" data-category="Business and Finance">
-                            <div class="icon">📈</div>
-                            <h3 class="font-display">Business</h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="how-it-works" class="section">
                 <div class="container">
-                    <h2 class="section-title font-display">Start your learning journey in three simple steps</h2>
-                    <div class="how-it-works-timeline">
-                        <div class="timeline-step">
-                            <div class="timeline-number">1</div>
-                            <div class="timeline-icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    <div class="section-header">
+                        <span class="section-tag">Browse</span>
+                        <h2 class="section-title">Explore by Category</h2>
+                        <p class="section-subtitle">Find lectures across every discipline and domain</p>
+                    </div>
+                    <div class="category-grid">
+                        <div class="category-card cat-science card-hover-effect" data-category="Science">
+                            <div class="cat-glow"></div>
+                            <div class="cat-icon-wrap">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
                                 </svg>
                             </div>
-                            <h3 class="font-display">Search</h3>
-                            <p>Find lectures on any topic using our powerful search engine.</p>
+                            <div class="cat-text">
+                                <h3>Science</h3>
+                                <p>Physics, Chemistry, Biology</p>
+                            </div>
+                            <span class="cat-count">1,240 lectures</span>
+                            <div class="cat-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </div>
                         </div>
-                        <div class="timeline-step">
-                            <div class="timeline-number">2</div>
-                            <div class="timeline-icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <div class="category-card cat-tech card-hover-effect" data-category="Technology">
+                            <div class="cat-glow"></div>
+                            <div class="cat-icon-wrap">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
                                 </svg>
                             </div>
-                            <h3 class="font-display">Learn</h3>
-                            <p>Watch high-quality videos from top educators around the world.</p>
+                            <div class="cat-text">
+                                <h3>Technology</h3>
+                                <p>Programming, AI, Cloud</p>
+                            </div>
+                            <span class="cat-count">2,580 lectures</span>
+                            <div class="cat-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </div>
                         </div>
-                        <div class="timeline-step">
-                            <div class="timeline-number">3</div>
-                            <div class="timeline-icon-box">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        <div class="category-card cat-sports card-hover-effect" data-category="Sports and Fitness">
+                            <div class="cat-glow"></div>
+                            <div class="cat-icon-wrap">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 8v4l3 3"/>
                                 </svg>
                             </div>
-                            <h3 class="font-display">Grow</h3>
-                            <p>Expand your knowledge and skills at your own pace.</p>
+                            <div class="cat-text">
+                                <h3>Sports</h3>
+                                <p>Fitness, Nutrition, Training</p>
+                            </div>
+                            <span class="cat-count">680 lectures</span>
+                            <div class="cat-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="category-card cat-business card-hover-effect" data-category="Business and Finance">
+                            <div class="cat-glow"></div>
+                            <div class="cat-icon-wrap">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <line x1="12" y1="20" x2="12" y2="10"/>
+                                    <line x1="18" y1="20" x2="18" y2="4"/>
+                                    <line x1="6" y1="20" x2="6" y2="16"/>
+                                </svg>
+                            </div>
+                            <div class="cat-text">
+                                <h3>Business</h3>
+                                <p>Finance, Marketing, Strategy</p>
+                            </div>
+                            <span class="cat-count">1,920 lectures</span>
+                            <div class="cat-arrow">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- How It Works -->
+            <section id="how-it-works" class="section section-alt">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-tag">Process</span>
+                        <h2 class="section-title">How it works</h2>
+                        <p class="section-subtitle">Start your learning journey in three simple steps</p>
+                    </div>
+                    <div class="steps-row">
+                        <div class="step-card">
+                            <div class="step-number">01</div>
+                            <div class="step-icon-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                            </div>
+                            <h3>Search</h3>
+                            <p>Type any topic, course name, or educator. Our engine finds the most relevant lectures instantly.</p>
+                        </div>
+                        <div class="step-connector">
+                            <svg width="48" height="14" viewBox="0 0 48 14" fill="none">
+                                <path d="M0 7 Q12 1 24 7 Q36 13 48 7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+                                <path d="M42 3 L48 7 L42 11" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">02</div>
+                            <div class="step-icon-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                            <h3>Learn</h3>
+                            <p>Watch high-quality lectures from verified educators and top institutions worldwide.</p>
+                        </div>
+                        <div class="step-connector">
+                            <svg width="48" height="14" viewBox="0 0 48 14" fill="none">
+                                <path d="M0 7 Q12 1 24 7 Q36 13 48 7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+                                <path d="M42 3 L48 7 L42 11" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">03</div>
+                            <div class="step-icon-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </div>
+                            <h3>Grow</h3>
+                            <p>Build real skills and discover new areas to explore at your own pace, on your schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Educators -->
             <section id="featured-channels" class="section">
                 <div class="container">
-                    <h2 class="section-title font-display">Featured Educators</h2>
-                    <div class="channel-grid">
-                        <a href="https://www.youtube.com/@CodeWithHarry" target="_blank">
-                        <div class="channel-card" data-channel="Code with Harry">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_kX3sdbuu3KFmRPsmlu0R5Rx_BhpxwupjtvJmkEdNfla7w=s176-c-k-c0x00ffffff-no-rj-mo" alt="Code with Harry">
-                            <p>Code with Harry</p>
-                        </div>
+                    <div class="section-header">
+                        <span class="section-tag">Educators</span>
+                        <h2 class="section-title">Learn from the best</h2>
+                        <p class="section-subtitle">Hand-picked educators trusted by millions of learners</p>
+                    </div>
+                    <div class="channels-grid">
+                        <a href="https://www.youtube.com/@CodeWithHarry" target="_blank" class="channel-card" data-channel="Code with Harry">
+                            <div class="channel-avatar-wrap">
+                                <img src="https://yt3.googleusercontent.com/ytc/AIdro_kX3sdbuu3KFmRPsmlu0R5Rx_BhpxwupjtvJmkEdNfla7w=s176-c-k-c0x00ffffff-no-rj-mo" alt="Code with Harry" onerror="this.src='https://placehold.co/176x176/1a2332/4da3ff?text=CWH'">
+                            </div>
+                            <span class="channel-name">Code with Harry</span>
+                            <span class="channel-tag">Programming</span>
                         </a>
-                        <a href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank">
-                        <div class="channel-card" data-channel="Apna College">
-                            <img src="https://yt3.ggpht.com/FEcjRtez5od8UowDo6tTt9WlE-MrIFEmcwPMTORmK9Swk6KCklOmA3xfIG9WuLWfNYfNThQE=s176-c-k-c0x00ffffff-no-rj-mo" alt="Apna College">
-                            <p>Apna College</p>
-                        </div>
+                        <a href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank" class="channel-card" data-channel="Apna College">
+                            <div class="channel-avatar-wrap">
+                                <img src="https://yt3.ggpht.com/FEcjRtez5od8UowDo6tTt9WlE-MrIFEmcwPMTORmK9Swk6KCklOmA3xfIG9WuLWfNYfNThQE=s176-c-k-c0x00ffffff-no-rj-mo" alt="Apna College" onerror="this.src='https://placehold.co/176x176/1a2332/4da3ff?text=AC'">
+                            </div>
+                            <span class="channel-name">Apna College</span>
+                            <span class="channel-tag">CS &amp; DSA</span>
                         </a>
-                        <a href="https://www.youtube.com/@nitinujgare" target="_blank">
-                        <div class="channel-card" data-channel="Nitin Ujgare">
-                            <img src="\images\NitinujgareSir.jpg" alt="Nitin Ujgare" referrerpolicy="no-referrer">
-                            <p>Nitin Ujgare Sir</p>
-                        </div>
+                        <a href="https://www.youtube.com/@nitinujgare" target="_blank" class="channel-card" data-channel="Nitin Ujgare">
+                            <div class="channel-avatar-wrap">
+                                <img src="/images/NitinujgareSir.jpg" alt="Nitin Ujgare" referrerpolicy="no-referrer" onerror="this.src='https://placehold.co/176x176/1a2332/4da3ff?text=NU'">
+                            </div>
+                            <span class="channel-name">Nitin Ujgare Sir</span>
+                            <span class="channel-tag">Engineering</span>
                         </a>
-                        <a href="https://www.youtube.com/@dhirajbirari533" target="_blank">
-                        <div class="channel-card" data-channel="DHIRAJ BIRARI">
-                            <img src="https://kbtcoe.org/wp-content/uploads/2016/11/DBirari.jpg" alt="DHIRAJ BIRARI">
-                            <p>Dhiraj Birari Sir</p>
-                        </div>
+                        <a href="https://www.youtube.com/@dhirajbirari533" target="_blank" class="channel-card" data-channel="DHIRAJ BIRARI">
+                            <div class="channel-avatar-wrap">
+                                <img src="https://kbtcoe.org/wp-content/uploads/2016/11/DBirari.jpg" alt="DHIRAJ BIRARI" onerror="this.src='https://placehold.co/176x176/1a2332/4da3ff?text=DB'">
+                            </div>
+                            <span class="channel-name">Dhiraj Birari Sir</span>
+                            <span class="channel-tag">Engineering</span>
                         </a>
-                        <a href="https://www.youtube.com/@chaiaurcode" target="_blank">
-                        <div class="channel-card" data-channel="Chai aur Code">
-                            <img src="https://yt3.googleusercontent.com/6tLBV-DRVemxhmanuezR5HkHshX2g7Y46Rq8cysyO1V-nd2SaQ2Fi8cdgVM-n6v_8XZ5BEimxXI=s160-c-k-c0x00ffffff-no-rj" alt="Chai aur Code">
-                            <p>Chai aur Code</p>
-                        </div>
+                        <a href="https://www.youtube.com/@chaiaurcode" target="_blank" class="channel-card" data-channel="Chai aur Code">
+                            <div class="channel-avatar-wrap">
+                                <img src="https://yt3.googleusercontent.com/6tLBV-DRVemxhmanuezR5HkHshX2g7Y46Rq8cysyO1V-nd2SaQ2Fi8cdgVM-n6v_8XZ5BEimxXI=s160-c-k-c0x00ffffff-no-rj" alt="Chai aur Code" onerror="this.src='https://placehold.co/176x176/1a2332/4da3ff?text=CC'">
+                            </div>
+                            <span class="channel-name">Chai aur Code</span>
+                            <span class="channel-tag">Web Dev</span>
                         </a>
-                        <a href="https://www.youtube.com/@BroCodez" target="_blank">
-                        <div class="channel-card" data-channel="Bro Code">
-                            <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s176-c-k-c0x00ffffff-no-rj-mo" alt="Bro Code">
-                            <p>Bro Code</p>
-                        </div>
+                        <a href="https://www.youtube.com/@BroCodez" target="_blank" class="channel-card" data-channel="Bro Code">
+                            <div class="channel-avatar-wrap">
+                                <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s176-c-k-c0x00ffffff-no-rj-mo" alt="Bro Code" onerror="this.src='https://placehold.co/176x176/1a2332/4da3ff?text=BC'">
+                            </div>
+                            <span class="channel-name">Bro Code</span>
+                            <span class="channel-tag">Programming</span>
                         </a>
                     </div>
                 </div>
             </section>
+
+            <!-- CTA -->
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-card">
+                        <div class="cta-orb cta-orb-1"></div>
+                        <div class="cta-orb cta-orb-2"></div>
+                        <div class="cta-content">
+                            <h2>Start learning today.</h2>
+                            <p>Join millions of students already building skills on Edu.HCI</p>
+                        </div>
+                        <button class="cta-btn" id="cta-search-btn">
+                            <span>Explore Lectures</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
         </section>
 
-        <section id="search-results-section" class="section-hidden section">
-            <div class="container">
-                <div id="back-to-home">
-                    <button>&larr; Back to Home</button>
+        <!-- Search Results -->
+        <section id="search-results-section" class="section-hidden">
+            <div class="results-hero">
+                <div class="container">
+                    <button id="back-to-home" class="back-btn">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Back to Home</span>
+                    </button>
+                    <h2 class="results-title">Results for <span class="results-query" id="search-query-display"></span></h2>
+                    <p class="results-meta"><span id="results-count">0</span> videos found</p>
                 </div>
-                <div class="results-header">
-                    <h2 class="font-display">Search Results for "<span id="search-query-display"></span>"</h2>
-                    <p class="results-summary">Found <span id="results-count">0</span> videos.</p>
-                </div>
-                <div id="results-grid">
-                </div>
+            </div>
+            <div class="container results-container">
+                <div id="results-grid"></div>
             </div>
         </section>
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 Edu.HCI. All rights reserved.</p>
-            <p class="footer-text-secondary">A project for demonstrating HTML, CSS, and JavaScript skills.</p>
-            <p class="footer-text-secondary">Made by Om Wadghule.</p>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#" id="footer-home-link" class="logo">
+                    <div class="logo-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Edu<span class="logo-dot">.</span>HCI</span>
+                </a>
+                <p class="footer-tagline">Free education for everyone, everywhere.</p>
+            </div>
+            <div class="footer-meta">
+                <p>&copy; 2025 Edu.HCI. All rights reserved.</p>
+                <p>Made with care by <strong>Om Wadghule</strong></p>
+            </div>
         </div>
     </footer>
 
+    <!-- Login Modal -->
     <div id="login-modal" class="modal-overlay">
-        <div class="modal-content">
-            <button id="modal-close-btn" class="modal-close-btn">&times;</button>
-            <h2 class="font-display">Member Login</h2>
-            <form id="login-form">
+        <div class="modal-panel">
+            <button id="modal-close-btn" class="modal-close" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <div class="modal-logo-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h2>Welcome back</h2>
+                <p>Sign in to your Edu.HCI account</p>
+            </div>
+            <form id="login-form" class="modal-form">
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                    <div class="input-wrap">
+                        <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" required>
+                    <div class="input-wrap">
+                        <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
                 </div>
-                <button type="submit" class="login-submit-btn">Login</button>
+                <button type="submit" class="modal-submit-btn">Sign In</button>
+                <p class="modal-note">This is a demonstration only.</p>
             </form>
         </div>
     </div>
