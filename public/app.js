@@ -1,125 +1,173 @@
-        document.addEventListener('DOMContentLoaded', () => {
-            const searchForm = document.getElementById('search-form');
-            const searchInput = document.getElementById('search-input');
-            const homepageContent = document.getElementById('homepage-content');
-            const searchResultsSection = document.getElementById('search-results-section');
-            const resultsGrid = document.getElementById('results-grid');
-            const searchQueryDisplay = document.getElementById('search-query-display');
-            const resultsCount = document.getElementById('results-count');
-            const backToHomeBtn = document.getElementById('back-to-home');
-            const homeLink = document.getElementById('home-link');
-            const darkModeToggle = document.getElementById('dark-mode-toggle');
-            const loginBtn = document.getElementById('login-btn');
-            const loginModal = document.getElementById('login-modal');
-            const modalCloseBtn = document.getElementById('modal-close-btn');
+document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const homepageContent = document.getElementById('homepage-content');
+    const searchResultsSection = document.getElementById('search-results-section');
+    const resultsGrid = document.getElementById('results-grid');
+    const searchQueryDisplay = document.getElementById('search-query-display');
+    const resultsCount = document.getElementById('results-count');
+    const backToHomeBtn = document.getElementById('back-to-home');
+    const homeLink = document.getElementById('home-link');
+    const footerHomeLink = document.getElementById('footer-home-link');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const loginBtn = document.getElementById('login-btn');
+    const loginModal = document.getElementById('login-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const ctaSearchBtn = document.getElementById('cta-search-btn');
 
-            
+    function renderVideos(videos) {
+        resultsGrid.innerHTML = '';
+        resultsCount.textContent = videos.length;
 
-            function renderVideos(videos) {
-                resultsGrid.innerHTML = '';
-                resultsCount.textContent = videos.length;
-                if (videos.length === 0) {
-                    resultsGrid.innerHTML = `<p id="loader">No videos found matching your criteria.</p>`;
-                    return;
-                }
-                videos.forEach(video => {
-                    const videoCard = `
-                        <a href="https://www.youtube.com/watch?v=${video.id.videoId}" target="_blank" style="text-decoration: none; color: inherit;">
-                            <div class="video-card card-hover-effect">
-                                <img src="${video.snippet.thumbnails.high.url}" alt="${video.snippet.title}" onerror="this.onerror=null;this.src='https://placehold.co/400x225/7f1d1d/ffffff?text=Error';">
-                                <div class="video-card-content">
-                                    <h3>${video.snippet.title}</h3>
-                                    <p class="channel-name">${video.snippet.channelTitle}</p>
-                                    <div class="meta-info">
-                                        <span>${new Date(video.snippet.publishTime).toLocaleDateString()}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                    resultsGrid.innerHTML += videoCard;
-                });
-            }
-            
-           async function performSearch(query) {
-    if (!query.trim()) return;
-
-    searchQueryDisplay.textContent = query;
-    homepageContent.classList.add('section-hidden');
-    searchResultsSection.classList.remove('section-hidden');
-    window.scrollTo(0, 0);
-    resultsGrid.innerHTML = `<p id="loader">Searching for videos...</p>`;
-
-const url = `https://hci-project-3pg4.onrender.com/search?q=${encodeURIComponent(query)}`;
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`An error occurred: ${response.statusText}`);
+        if (videos.length === 0) {
+            resultsGrid.innerHTML = `
+                <div id="loader">
+                    <p>No videos found for this search. Try a different topic.</p>
+                </div>`;
+            return;
         }
-        const data = await response.json();
-        renderVideos(data.items);
-    } catch (error) {
-        console.error('Failed to fetch from YouTube API:', error);
-        resultsGrid.innerHTML = `<p id="loader">Failed to load videos. Please check the console for errors.</p>`;
+
+        videos.forEach(video => {
+            const date = new Date(video.snippet.publishTime).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric'
+            });
+            const card = document.createElement('a');
+            card.href = `https://www.youtube.com/watch?v=${video.id.videoId}`;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.style.textDecoration = 'none';
+            card.style.color = 'inherit';
+            card.innerHTML = `
+                <div class="video-card">
+                    <div class="video-thumb-wrap">
+                        <img src="${video.snippet.thumbnails.high.url}" alt="${video.snippet.title}" loading="lazy" onerror="this.src='https://placehold.co/480x270/0f1f38/4da3ff?text=No+Thumbnail'">
+                        <div class="video-play-overlay">
+                            <div class="video-play-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-card-body">
+                        <p class="video-title">${video.snippet.title}</p>
+                        <p class="video-channel">${video.snippet.channelTitle}</p>
+                        <p class="video-date">${date}</p>
+                    </div>
+                </div>`;
+            resultsGrid.appendChild(card);
+        });
     }
-}
 
-            
-            function showHomepage() {
-                homepageContent.classList.remove('section-hidden');
-                searchResultsSection.classList.add('section-hidden');
-                searchInput.value = '';
-            }
+    async function performSearch(query) {
+        if (!query.trim()) return;
 
-            searchForm.addEventListener('submit', (e) => {
+        searchQueryDisplay.textContent = `"${query}"`;
+        homepageContent.classList.add('section-hidden');
+        searchResultsSection.classList.remove('section-hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        resultsGrid.innerHTML = `
+            <div id="loader">
+                <div class="loader-spinner"></div>
+                <p>Finding lectures on "${query}"...</p>
+            </div>`;
+
+        const url = `https://hci-project-3pg4.onrender.com/search?q=${encodeURIComponent(query)}`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(response.statusText);
+            const data = await response.json();
+            renderVideos(data.items || []);
+        } catch (error) {
+            console.error('Search failed:', error);
+            resultsGrid.innerHTML = `
+                <div id="loader">
+                    <p>Failed to load videos. Please try again.</p>
+                </div>`;
+        }
+    }
+
+    function showHomepage() {
+        homepageContent.classList.remove('section-hidden');
+        searchResultsSection.classList.add('section-hidden');
+        searchInput.value = '';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        performSearch(searchInput.value);
+    });
+
+    document.querySelectorAll('.trending-search-btn, .category-card').forEach(el => {
+        el.addEventListener('click', (e) => {
+            const query = e.currentTarget.dataset.category
+                || e.currentTarget.dataset.channel
+                || e.currentTarget.textContent.trim();
+            searchInput.value = query;
+            performSearch(query);
+        });
+    });
+
+    document.querySelectorAll('.channel-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            const channelName = card.dataset.channel;
+            if (channelName && !e.ctrlKey && !e.metaKey) {
                 e.preventDefault();
-                performSearch(searchInput.value);
-            });
-            
-            document.querySelectorAll('.trending-search-btn, .category-card').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const query = e.currentTarget.dataset.category || e.currentTarget.dataset.channel || e.currentTarget.textContent;
-                    searchInput.value = query;
-                    performSearch(query);
-                });
-            });
+                searchInput.value = channelName;
+                performSearch(channelName);
+            }
+        });
+    });
 
-            backToHomeBtn.addEventListener('click', showHomepage);
-            homeLink.addEventListener('click', (e) => {
+    backToHomeBtn.addEventListener('click', showHomepage);
+
+    [homeLink, footerHomeLink].forEach(link => {
+        if (link) {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
                 showHomepage();
             });
+        }
+    });
 
-            // Dark Mode Toggle
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) {
-                    darkModeToggle.innerHTML = '<span>☀️</span>';
-                } else {
-                    darkModeToggle.innerHTML = '<span>🌙</span>';
-                }
-            });
-
-            // Login Modal Logic
-            loginBtn.addEventListener('click', () => {
-                loginModal.classList.add('visible');
-            });
-
-            modalCloseBtn.addEventListener('click', () => {
-                loginModal.classList.remove('visible');
-            });
-
-            loginModal.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    loginModal.classList.remove('visible');
-                }
-            });
-
-            document.getElementById('login-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Login functionality is for demonstration only.');
-                loginModal.classList.remove('visible');
-            });
-
+    if (ctaSearchBtn) {
+        ctaSearchBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => searchInput.focus(), 600);
         });
+    }
+
+    // Theme toggle — light/dark
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            header.style.borderBottomColor = 'var(--border)';
+        } else {
+            header.style.borderBottomColor = 'transparent';
+        }
+    }, { passive: true });
+
+    // Modal
+    loginBtn.addEventListener('click', () => loginModal.classList.add('visible'));
+    modalCloseBtn.addEventListener('click', () => loginModal.classList.remove('visible'));
+    loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) loginModal.classList.remove('visible');
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') loginModal.classList.remove('visible');
+    });
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Login is for demonstration only.');
+        loginModal.classList.remove('visible');
+    });
+});
